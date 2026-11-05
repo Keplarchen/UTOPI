@@ -1,0 +1,65 @@
+UTOPI: Efficient Egocentric Long-Video Understanding in AR via User-Guided Token Pre-Compression
+Copyright 2026 The UTOPI Authors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE). This applies to the UTOPI code in
+utopi/, scripts/ and tools/ (the UTOPI code and the UTOPI additions to the model file).
+
+This repository includes or derives from the following third-party software.
+
+1. Qwen2.5-VL model code (utopi/qwen2_5_vl/)
+   Derived from Hugging Face Transformers, Copyright 2025 The Qwen Team and The HuggingFace Inc. team.
+   Licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+   The files were modified for UTOPI: token selection before the language decoder (AGTS, IVOC) and
+   the training path of the saliency predictor were added to modeling_qwen2_5_vl.py.
+   The Qwen2.5-VL-7B-Instruct weights are downloaded separately from the Hugging Face hub and are
+   licensed under the Apache License, Version 2.0 by Alibaba Cloud.
+
+2. TimeChat-Online (https://github.com/yaolinli/TimeChat-Online)
+   The token dropping framework in utopi/qwen2_5_vl/modeling_qwen2_5_vl.py (the 'feature' and 'random' methods of
+   token_drop and the slicing of the multimodal rotary position embeddings) is adapted from the
+   Differential Token Drop implementation of TimeChat-Online.
+   Copyright (c) 2025, Language Computing and Machine Learning Group (LANCO) @ Peking University.
+   Licensed under the BSD 3-Clause License:
+
+   Redistribution and use in source and binary forms, with or without modification, are permitted
+   provided that the following conditions are met:
+   1. Redistributions of source code must retain the above copyright notice, this list of conditions
+      and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright notice, this list of
+      conditions and the following disclaimer in the documentation and/or other materials provided
+      with the distribution.
+   3. Neither the name of the copyright holder nor the names of its contributors may be used to
+      endorse or promote products derived from this software without specific prior written
+      permission.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+   IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+   FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+   IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+   OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+3. UniDepth (third_party/UniDepth/, https://github.com/lpiccinelli-eth/UniDepth)
+   Copyright the UniDepth authors (ETH Zurich). Licensed under the Creative Commons
+   Attribution-NonCommercial 4.0 International License (third_party/UniDepth/LICENSE).
+   This directory is NOT covered by the Apache License of this repository and may not be used for
+   commercial purposes. It is only needed by tools/estimate_depth.py.
+   third_party/UniDepth/unidepth/layers/nystrom_port.py is a pure-PyTorch port of the Nystrom
+   attention of xformers 0.0.24 (https://github.com/facebookresearch/xformers),
+   Copyright (c) Facebook, Inc. and its affiliates, licensed under the BSD 3-Clause License.
+
+4. Depth-Anything-V2 (third_party/Depth-Anything/, https://github.com/DepthAnything/Depth-Anything-V2)
+   Copyright the Depth-Anything-V2 authors. Licensed under the Apache License, Version 2.0
+   (third_party/Depth-Anything/LICENSE). It contains DINOv2 code, Copyright (c) Meta Platforms, Inc.
+   and affiliates, Apache License, Version 2.0.
+   The Depth-Anything-V2-Large weights used by tools/estimate_depth.py are downloaded separately
+   and are licensed under CC BY-NC 4.0 (non-commercial).
+
+5. MegaSaM (https://github.com/mega-sam/mega-sam) and SUM (https://github.com/Arhosseini77/SUM)
+   are not included. tools/estimate_pose_megasam.py and tools/predict_gaze_sum.py call the
+   official code of these projects from their own environments; their licenses apply to that use.
+
+Datasets (Aria Everyday Activities, Nymeria, EgoSchema) are obtained from their providers under
+their own terms and are not redistributed here. data/egoeye/VQA.json contains only the EgoEye
+question-answer annotations.

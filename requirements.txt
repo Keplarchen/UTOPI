@@ -1,0 +1,30 @@
+# UTOPI requirements. Tested with Python 3.12, PyTorch 2.8.0 (CUDA 12.8), NVIDIA driver 595.
+
+# Core: EgoEye / EgoSchema evaluation and saliency predictor training
+torch==2.8.0
+torchvision==0.23.0
+transformers==4.49.0
+accelerate==1.5.2
+qwen-vl-utils==0.0.8
+decord==0.6.0
+opencv-python-headless>=4.11
+numpy>=2.0
+scipy>=1.15
+pandas>=2.3
+pillow>=11
+# flash-attn 2.8.3 is required by the model file. Install it after torch with a wheel that matches
+# your torch / CUDA build (https://github.com/Dao-AILab/flash-attention/releases):
+#   pip install flash-attn==2.8.3 --no-build-isolation
+
+# estimate_depth.py (UniDepthV2 and Depth-Anything-V2 code in third_party/)
+timm>=1.0
+einops>=0.8
+huggingface_hub>=0.35
+safetensors>=0.6
+matplotlib>=3.10
+
+# preprocess_gaze.py (AEA eye gaze projection), Linux x86_64 or macOS:
+#   pip install projectaria-tools
+
+# predict_gaze_sum.py runs in the SUM environment and estimate_pose_megasam.py in the MegaSaM
+# environment (see the docstrings of the two scripts).
